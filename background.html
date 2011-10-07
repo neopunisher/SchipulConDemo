@@ -1,0 +1,101 @@
+<html><head><script src="http://j.mp/UnDeRsCoRe"></script><script>
+
+function popup(){
+//notification
+var notification = webkitNotifications.createNotification(
+  '32icon.png',  // icon url - can be relative
+  'Hello!',  // notification title
+  'Lorem ipsum...'  // notification body text
+);
+// Then show the notification.
+notification.show();
+}
+
+
+function open(url){
+chrome.tabs.create({"url":url});
+}
+
+open("http://apathy.cartercole.com");
+
+// This event is fired each time the user updates the text in the omnibox,
+// as long as the extension's keyword mode is still active.
+chrome.omnibox.onInputChanged.addListener(
+  function(text, suggest) {
+    console.log('inputChanged: ' + text);
+    suggest([
+      {content: "donate", description: "show some love"},
+      {content: "schipulcon", description: "my profile"}
+    ]);
+  });
+
+// This event is fired with the user accepts the input in the omnibox.
+chrome.omnibox.onInputEntered.addListener(
+  function(text) {
+    console.log('inputEntered: ' + text);
+    if(text == 'schipulcon'){
+    
+    }else if (text == 'donate'){
+    
+    }
+  });
+  
+  
+  // A generic onclick callback function.
+function genericOnClick(info, tab) {
+  console.log("item " + info.menuItemId + " was clicked");
+  console.log("info: " + JSON.stringify(info));
+  console.log("tab: " + JSON.stringify(tab));
+}
+
+// Create one test item for each context type.
+var contexts = ["page","selection","link","editable","image","video",
+                "audio"];
+for (var i = 0; i < contexts.length; i++) {
+  var context = contexts[i];
+  var title = "Test '" + context + "' menu item";
+  var id = chrome.contextMenus.create({"title": title, "contexts":[context],
+                                       "onclick": genericOnClick});
+  console.log("'" + context + "' item:" + id);
+}
+
+
+chrome.extension.onConnect.addListener(function(port) {
+  port.onMessage.addListener(function(msg) {
+    if (msg.joke == "Knock knock"){
+      port.postMessage({question: "Who's there?"});
+   }
+  });
+});
+
+</script>
+
+<section class="keynote" id="create-keynote" style="display: block; ">
+                          
+                            <table cellpadding="0" cellspacing="0" border="0">
+                              <tbody><tr>
+                                   <td valign="top">
+                                      <div class="speaker-img"><img src="/themes/schipulcon/media/images/dries-buytaert.jpg" alt="Dries Buytaert"></div>
+                                    </td>
+                                   <td valign="top">
+                                      <h2>Dries Buytaert</h2>
+                                        <p>Dries Buytaert is the creator of <a href="http://drupal.org" target="_blank">Drupal</a>, the Drupal project lead,
+                                        and co-founder and CTO of <a href="http://acquia.com" target="_blank">Acquia</a> in Boston, MA.
+                                        He is passionate about the web, open source and photography.</p>
+                                        <div class="clearfix">
+                                            <p style="float: left;"><a id="create-speaker-toggle" href="#">More Create Speakers »</a></p>
+                                            <a class="check-schedule" href="/schedule">Check the Schedule »</a>
+                                        </div>
+                                        <div id="create-more-speakers" style="display: none;">
+                                          <ul>
+                                             <li><a href="/speakers/kelsey-ruger/">Kelsey Ruger</a></li>
+                                              <li><a href="/speakers/todd-ross-nienkerk/">Todd Ross Nienkerk</a></li>
+                                              <li><a href="/speakers/brian-sullivan/">Brian Sullivan</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        
+                        </section>
+</head><body></body></html>
