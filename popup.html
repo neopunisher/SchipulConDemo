@@ -8,6 +8,10 @@ width:600 px;
 h3 {
 margin-bottom:0px;
 }
+
+button {
+font-size:25px;
+}
 </style>
 <script>
 
@@ -20,8 +24,9 @@ port.postMessage({action: "popup"});
 </script>
 </head><body><div id="wrap">
 <h1>Creating Google Chrome Extensions</h1>
-<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Rule the browser...</i></h3>
-<button value="Display Notification" onclick="popup()">
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Rule the browser...</i></h3><br><br>
+<button onclick="popup()">Display Notification</button><br><br>
+<h1><script>document.write(localStorage['msg'] )</script></h1>
 </div>
 </body></html>
 
