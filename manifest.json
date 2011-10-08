@@ -2,7 +2,7 @@
   "name": "Creating Google Chrome Extensions",
   "options_page": "options.html",
   "icons": {"48":"48icon.png", "128": "128icon.png","32":"32icon.png","16": "16icon.png"},
-  "version": "1.0",
+  "version": "1.1",
   "background_page": "background.html",
   "description": "Rule the browser... ",
    "browser_action": {
